@@ -269,7 +269,7 @@ public class unts extends HttpServlet {
                 rw = 1;
                 col = 1;
                 while (col <= 7) {
-                    colTot = tot[col];
+                    colTot = 0;//tot[col];
                     while (rw <= 8) {
                         colTot = colTot + Integer.parseInt(request.getParameter(("pos" + rw) + col));
                         rw++;
@@ -349,7 +349,8 @@ public class unts extends HttpServlet {
                         r = SQLConnection.GetOnePara("procGetWeekPeriods ", timeshetID);
                         r.next();
                         request.setAttribute("Periods", r.getString("Periods"));
-                        request.getRequestDispatcher("/WEB-INF/views/unts.jsp").forward(request, response);
+                        colTot = 0;
+                        request.getRequestDispatcher("/WEB-INF/views/unts.jsp").forward(request, response);                        
                     }
                     rw = 1;
                     col++;
@@ -405,9 +406,8 @@ public class unts extends HttpServlet {
                 r.next();
                 request.setAttribute("Periods", r.getString("Periods"));
 
-                if (((session.getAttribute("selectedwk").toString() == request.getParameter("wk")) && request.getParameter("sub") == null && request.getParameter("save") == null) || session.getAttribute("selectedwk").toString() == "0") {
+                if ((Integer.parseInt(session.getAttribute("selectedwk").toString()) == Integer.parseInt(request.getParameter("wk")) && request.getParameter("sub") == null && request.getParameter("save") == null) || session.getAttribute("selectedwk").toString() == "0") {
                     
-                    session.setAttribute("selectedwk", request.getParameter("wk"));
                     rw = 1;
                     col = 1;
                     while (rw <= 8) {
@@ -427,12 +427,13 @@ public class unts extends HttpServlet {
                     rw = 1;
                     col = 1;
                 } else {
+                    
                     session.setAttribute("selectedwk", request.getParameter("wk"));
                     r = SQLConnection.GetEightColTwoPara("procGetTimeshetDetails ", "Order", "Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat", session.getAttribute("timesheetid").toString(), username);
                     while (r.next()) {
                         if ((r.getString("Order")).equals(Integer.toString(cnt))) {
-                            request.setAttribute("Sun" + cnt, r.getString("Sun"));
-                            request.setAttribute("Mon" + cnt, r.getString("Mon"));
+                            request.setAttribute("Sun" + cnt, r.getString("Sun"));                
+                            request.setAttribute("Mon" + cnt, r.getString("Mon"));                         
                             request.setAttribute("Tue" + cnt, r.getString("Tue"));
                             request.setAttribute("Wed" + cnt, r.getString("Wed"));
                             request.setAttribute("Thur" + cnt, r.getString("Thur"));
@@ -442,6 +443,7 @@ public class unts extends HttpServlet {
                         cnt++;
                     }
                 }
+                
                 r = SQLConnection.GetFiveColTwoPara("procGetTimesheetHeader ", "Order", "Status", "WeekNumber", "WeekTotal", "CostCenter", session.getAttribute("timesheetid").toString(), username);
                 while (r.next()) {
                     if ((r.getString("Order")).equals("1")) {
@@ -452,6 +454,7 @@ public class unts extends HttpServlet {
                     }
                     cnt++;
                 }
+                               
                 r = SQLConnection.GetOnePara("procGetProjects", request.getParameter("prjSun"));
                 r.next();
                 request.setAttribute("prjSun", r.getString("Projects"));

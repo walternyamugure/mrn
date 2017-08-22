@@ -211,6 +211,23 @@ public class SQLConnection {
         ResultSet r = SQLConnection.ExecuteQuery(s);
         return r;
     }
+       public static ResultSet UpdateElevenPara(String procname, String para1, String para2, String para3, String para4, String para5, String para6, String para7, String para8, String para9, String para10,String para11) throws SQLException {
+        SQLConnection.Connect();
+        PreparedStatement s = SQLConnection.connection.prepareCall("{call " + procname + "(?,?,?,?,?,?,?,?,?,?,?)}");
+        s.setString(1, para1);
+        s.setString(2, para2);
+        s.setString(3, para3);
+        s.setString(4, para4);
+        s.setString(5, para5);
+        s.setString(6, para6);
+        s.setString(7, para7);
+        s.setString(8, para8);
+        s.setString(9, para9);
+        s.setString(10, para10);
+        s.setString(11, para11);
+        ResultSet r = SQLConnection.ExecuteQuery(s);
+        return r;
+    }
 
     public static ResultSet UpdateEightPara(String procname, String para1, String para2, int para3, int para4, int para5, int para6, String[] para) throws SQLException {
         SQLConnection.Connect();

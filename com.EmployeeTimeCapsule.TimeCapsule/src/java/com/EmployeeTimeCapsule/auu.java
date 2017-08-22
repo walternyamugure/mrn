@@ -57,7 +57,7 @@ public class auu extends HttpServlet {
             try {
                 if (request.getParameter("save") != null) {
                     
-                    r = SQLConnection.UpdateTenPara("procUpdUserDetails",request.getParameter("username"),request.getParameter("name"),request.getParameter("surname"),request.getParameter("pass"),request.getParameter("confirmpass"),request.getParameter("role"),request.getParameter("emptyp"),request.getParameter("email"),request.getParameter("department"),request.getParameter("active"));
+                    r = SQLConnection.UpdateElevenPara("procUpdUserDetails",request.getParameter("username"),request.getParameter("name"),request.getParameter("surname"),request.getParameter("pass"),request.getParameter("confirmpass"),request.getParameter("role"),request.getParameter("emptyp"),request.getParameter("email"),request.getParameter("department"),request.getParameter("active"),request.getParameter("costcenter"));
                     r.next();
                     request.setAttribute("ResultMessage", r.getString("ResultMessage")); 
                     
@@ -71,6 +71,7 @@ public class auu extends HttpServlet {
                     request.setAttribute("Department", r.getString("Department"));
                     request.setAttribute("EmploymentType", r.getString("EmploymentType"));
                     request.setAttribute("Role", r.getString("Role"));
+                    request.setAttribute("CostCenter", r.getString("CostCenter"));
                                 
                 }
                 else{
@@ -84,6 +85,7 @@ public class auu extends HttpServlet {
                     request.setAttribute("Department", r.getString("Department"));
                     request.setAttribute("EmploymentType", r.getString("EmploymentType"));
                     request.setAttribute("Role", r.getString("Role"));
+                    request.setAttribute("CostCenter", r.getString("CostCenter"));
                     request.setAttribute("ResultMessage", r.getString("ResultMessage"));                    
                 }
                 

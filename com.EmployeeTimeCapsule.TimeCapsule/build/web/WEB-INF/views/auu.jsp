@@ -98,6 +98,9 @@
                                         <td>Confirm Password</td><td> <input name="confirmpass" class="form-control"  value="${Password}" /></td>
                                     </tr>   
                                     <tr>
+                                        <td>Cost Center</td><td> <input name="costcenter" class="form-control" value="${CostCenter}"/></td>
+                                    </tr>
+                                    <tr>
                                         <td>Status</td>
                                         <td>
                                             <div class="form-group">

@@ -84,6 +84,9 @@
                                         <td>Department</td><td> <input name="department" class="form-control" /></td>
                                     </tr>
                                     <tr>
+                                        <td>Cost Center</td><td> <input name="costcenter" class="form-control" /></td>
+                                    </tr>
+                                    <tr>
                                         <td>Password</td><td> <input name="pass" class="form-control" /></td>
                                     </tr>
                                     <tr>

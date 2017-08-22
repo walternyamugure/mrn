@@ -54,7 +54,7 @@ public class anu extends HttpServlet {
         if (session != null && session.getAttribute("username") != null && session.getAttribute("role") != null) {
 
             try {
-                r = SQLConnection.UpdateEightPara("procInsertNewUser",request.getParameter("name"),request.getParameter("surname"),request.getParameter("pass"),request.getParameter("confirmpass"),request.getParameter("role"),request.getParameter("emptyp"),request.getParameter("email"),request.getParameter("department"));
+                r = SQLConnection.UpdateNinePara("procInsertNewUser",request.getParameter("name"),request.getParameter("surname"),request.getParameter("pass"),request.getParameter("confirmpass"),request.getParameter("role"),request.getParameter("emptyp"),request.getParameter("email"),request.getParameter("department"),request.getParameter("costcenter"));
                 while (r.next()) {
                     res = r.getString("ResultMessage");                     
                 }
