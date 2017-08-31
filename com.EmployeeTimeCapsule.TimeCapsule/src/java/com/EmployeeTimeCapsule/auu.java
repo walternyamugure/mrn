@@ -28,6 +28,18 @@ public class auu extends HttpServlet {
             String rooturl = request.getRequestURL().toString().substring(0, request.getRequestURL().toString().indexOf("com.EmployeeTimeCapsule.TimeCapsule")) + "com.EmployeeTimeCapsule.TimeCapsule/";
             request.setAttribute("url", rooturl);
 
+            try {
+                r = SQLConnection.GetZeroPara("getRoles");
+                r.next();
+                request.setAttribute("Role", r.getString("Roles"));
+                r = SQLConnection.GetZeroPara("getEmploymentTypes");
+                r.next();
+                request.setAttribute("EmploymentType", r.getString("EmploymentType"));
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(anu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
             switch (role) {
                 case "Admin":
                     request.getRequestDispatcher("/WEB-INF/views/auu.jsp").forward(request, response);
@@ -51,16 +63,16 @@ public class auu extends HttpServlet {
         HttpSession session = request.getSession(false);
         ResultSet r = null;
         String res = "";
-        
+
         if (session != null && session.getAttribute("username") != null && session.getAttribute("role") != null) {
 
             try {
                 if (request.getParameter("save") != null) {
-                    
-                    r = SQLConnection.UpdateElevenPara("procUpdUserDetails",request.getParameter("username"),request.getParameter("name"),request.getParameter("surname"),request.getParameter("pass"),request.getParameter("confirmpass"),request.getParameter("role"),request.getParameter("emptyp"),request.getParameter("email"),request.getParameter("department"),request.getParameter("active"),request.getParameter("costcenter"));
+
+                    r = SQLConnection.UpdateElevenPara("procUpdUserDetails", request.getParameter("username"), request.getParameter("name"), request.getParameter("surname"), request.getParameter("pass"), request.getParameter("confirmpass"), request.getParameter("role"), request.getParameter("emptyp"), request.getParameter("email"), request.getParameter("department"), request.getParameter("active"), request.getParameter("costcenter"));
                     r.next();
-                    request.setAttribute("ResultMessage", r.getString("ResultMessage")); 
-                    
+                    request.setAttribute("ResultMessage", r.getString("ResultMessage"));
+
                     r = SQLConnection.GetOnePara("procGetUser", request.getParameter("username"));
                     r.next();
                     request.setAttribute("UserID", r.getString("UserID"));
@@ -72,9 +84,8 @@ public class auu extends HttpServlet {
                     request.setAttribute("EmploymentType", r.getString("EmploymentType"));
                     request.setAttribute("Role", r.getString("Role"));
                     request.setAttribute("CostCenter", r.getString("CostCenter"));
-                                
-                }
-                else{
+
+                } else {
                     r = SQLConnection.GetOnePara("procGetUser", request.getParameter("search"));
                     r.next();
                     request.setAttribute("UserID", r.getString("UserID"));
@@ -86,9 +97,9 @@ public class auu extends HttpServlet {
                     request.setAttribute("EmploymentType", r.getString("EmploymentType"));
                     request.setAttribute("Role", r.getString("Role"));
                     request.setAttribute("CostCenter", r.getString("CostCenter"));
-                    request.setAttribute("ResultMessage", r.getString("ResultMessage"));                    
+                    request.setAttribute("ResultMessage", r.getString("ResultMessage"));
                 }
-                
+
                 request.getRequestDispatcher("/WEB-INF/views/auu.jsp").forward(request, response);
 
             } catch (SQLException ex) {

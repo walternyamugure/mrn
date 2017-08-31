@@ -17,13 +17,7 @@
         <script src="js/jquery-3.2.1.js"></script>  
         <script src="js/jquery-ui.js"></script>
 
-        <script type="text/javascript">
-            $(function ()
-            {
-                $('#date-pick').datepicker();
-            });
-        </script>
-        <script>
+       <script>
             $(document).ready(function () {
                 $('#save').on('click', function (data) {
 
@@ -44,118 +38,39 @@
                     var th;
                     var totUsedHours;
                     while (rw <= 8) {
-                        col = 1;
-                        while (col <= 7) {
-                            ele = "pos" + rw + col;
+                    col = 1;
+                            while (col <= 7) {
+                    ele = "pos" + rw + col;
                             val = document.getElementById(ele).value;
                             if (!isNaN(val) && val >= 0 && val < 17) {
-                                document.getElementById(ele).style.removeProperty("color");
-                                document.getElementById(ele).style.removeProperty("borderColor");
-                                if (rw == 8) {
-                                    if (col == 1) {
-                                        uh = document.getElementById('suh').innerText;
-                                        th = document.getElementById('sth').innerText;
-                                        uh = uh.split('(').join('');
-                                        th = th.split('/').join('');
-                                        th = th.split(')').join('');
-                                        uh = Number(uh);
-                                        th = Number(th);
-                                        if ((uh + Number(val)) > th) {
-                                            document.getElementById(ele).style.color = "red";
-                                            document.getElementById(ele).style.borderColor = "red";
-                                            data.preventDefault();
-                                        }
-                                    } else if (col == 2) {
-                                        uh = document.getElementById('muh').innerText;
-                                        th = document.getElementById('mth').innerText;
-                                        uh = uh.split('(').join('');
-                                        th = th.split('/').join('');
-                                        th = th.split(')').join('');
-                                        uh = Number(uh);
-                                        th = Number(th);
-                                        if ((uh + Number(val)) > th) {
-                                            document.getElementById(ele).style.color = "red";
-                                            document.getElementById(ele).style.borderColor = "red";
-                                            data.preventDefault();
-                                        }
-                                    } else if (col == 3) {
-                                        uh = document.getElementById('tuh').innerText;
-                                        th = document.getElementById('tth').innerText;
-                                        uh = uh.split('(').join('');
-                                        th = th.split('/').join('');
-                                        th = th.split(')').join('');
-                                        uh = Number(uh);
-                                        th = Number(th);
-                                        if ((uh + Number(val)) > th) {
-                                            document.getElementById(ele).style.color = "red";
-                                            document.getElementById(ele).style.borderColor = "red";
-                                            data.preventDefault();
-                                        }
-                                    } else if (col == 4) {
-                                        uh = document.getElementById('wuh').innerText;
-                                        th = document.getElementById('wth').innerText;
-                                        uh = uh.split('(').join('');
-                                        th = th.split('/').join('');
-                                        th = th.split(')').join('');
-                                        uh = Number(uh);
-                                        th = Number(th);
-                                        if ((uh + Number(val)) > th) {
-                                            document.getElementById(ele).style.color = "red";
-                                            document.getElementById(ele).style.borderColor = "red";
-                                            data.preventDefault();
-                                        }
-                                    } else if (col == 5) {
-                                        uh = document.getElementById('thuh').innerText;
-                                        th = document.getElementById('thth').innerText;
-                                        uh = uh.split('(').join('');
-                                        th = th.split('/').join('');
-                                        th = th.split(')').join('');
-                                        uh = Number(uh);
-                                        th = Number(th);
-                                        if ((uh + Number(val)) > th) {
-                                            document.getElementById(ele).style.color = "red";
-                                            document.getElementById(ele).style.borderColor = "red";
-                                            data.preventDefault();
-                                        }
-                                    } else if (col == 6) {
-                                        uh = document.getElementById('fuh').innerText;
-                                        th = document.getElementById('fth').innerText;
-                                        uh = uh.split('(').join('');
-                                        th = th.split('/').join('');
-                                        th = th.split(')').join('');
-                                        uh = Number(uh);
-                                        th = Number(th);
-                                        if ((uh + Number(val)) > th) {
-                                            document.getElementById(ele).style.color = "red";
-                                            document.getElementById(ele).style.borderColor = "red";
-                                            data.preventDefault();
-                                        }
-                                    } else if (col == 7) {
-                                        uh = document.getElementById('satuh').innerText;
-                                        th = document.getElementById('satth').innerText;
-                                        uh = uh.split('(').join('');
-                                        th = th.split('/').join('');
-                                        th = th.split(')').join('');
-                                        uh = Number(uh);
-                                        th = Number(th);
-                                        if ((uh + Number(val)) > th) {
-                                            document.getElementById(ele).style.color = "red";
-                                            document.getElementById(ele).style.borderColor = "red";
-                                            data.preventDefault();
-                                        }
-                                    }
-                                }
-                            } else {
-                                document.getElementById(ele).style.color = "red";
-                                document.getElementById(ele).style.borderColor = "red";
-                                data.preventDefault();
-                            }
-                            col++;
-                        }
-                        rw++;
+                    document.getElementById(ele).style.removeProperty("color");
+                            document.getElementById(ele).style.removeProperty("borderColor");
+                            if (rw == 8) {
+                    if (col == 1) {
+                    uh = document.getElementById('uh').innerText;
+                            th = document.getElementById('th').innerText;
+                            uh = uh.split('(').join('');
+                            th = th.split('/').join('');
+                            th = th.split(')').join('');
+                            uh = Number(uh);
+                            th = Number(th);
+                            if ((uh + Number(val)) > th) {
+                    document.getElementById(ele).style.color = "red";
+                            document.getElementById(ele).style.borderColor = "red";
+                            data.preventDefault();
                     }
+                    }
+                    } else {
+                    document.getElementById(ele).style.color = "red";
+                            document.getElementById(ele).style.borderColor = "red";
+                            data.preventDefault();
+                    }
+                    col++;
+                    }
+                    rw++;
+                    }
+                    });
                 });
-            });
         </script>
     </head>
     <body>          
@@ -329,89 +244,63 @@
                                             <td>
                                                 <input class="form-control"  id="pos77" name="pos77" type="text" value=${Sat7}></td>
                                         </tr>
-                                        <tr>
+                                            <tr>
                                             <td>Project</td>
+                                            <td><select class="form-control" name="weekday"> ${weekDays}</select></td>
+                                            <td><select class="form-control" name="prj" onchange="this.form.submit()"> ${prj}</select></td>
+                                            <td><select class="form-control" name="tsk">${tsk}${uh}:${th}</select></td>
+                                            <td> <input class="form-control" name="prjtskhrs" type="text" value="0"></td>   
                                             <td>
-                                                <select name="prjSun" class="form-control" onchange="this.form.submit()">
-                                                    ${prjSun}
-                                                </select><br /><select name="tskSun" class="form-control" onchange="this.form.submit()">
-                                                    ${tskSun}
-                                                </select> <span style="color:grey; font-size: small;">
-                                                    <label id="suh">${suh}</label>
-                                                    <label id="sth">${sth}</label>
-                                                </span><br /><input class="form-control" id="pos81" name="pos81" type="text" value=${Sun8} /></td>
+                                                <input type="submit" id="save" name="prjsave" value="Insert" class="btn btn-primary btn-sm"/>  
+                                            </td>
                                             <td>
-                                                <select  name="prjMon" class="form-control" onchange="this.form.submit()">
-                                                    ${prjMon}
-                                                </select><br /><select name="tskMon" class="form-control" onchange="this.form.submit()">
-                                                    ${tskMon}
-                                                </select><span style="color:grey; font-size: small;">
-                                                    <label id="muh"> ${muh}</label>
-                                                    <label id="mth"> ${mth}</label>
-                                                </span><br /><input class="form-control" id="pos82" name="pos82" type="text" value=${Mon8} /></td>
-                                            <td>
-                                                <select  name="prjTue" class="form-control" onchange="this.form.submit()">
-                                                    ${prjTue}
-                                                </select><br /><select name="tskTue" class="form-control" onchange="this.form.submit()">
-                                                    ${tskTue}
-                                                </select><span style="color:grey; font-size: small;">
-                                                    <label id="tuh">${tuh}</label>
-                                                    <label id="tth">${tth}</label>
-                                                </span><br /> <input class="form-control"  id="pos83" name="pos83" type="text" value=${Tue8} /></td>
-                                            <td>
-                                                <select  name="prjWed" class="form-control" onchange="this.form.submit()">
-                                                    ${prjWed}
-                                                </select><br /><select name="tskWed" class="form-control" onchange="this.form.submit()">
-                                                    ${tskWed}
-                                                </select> <span style="color:grey; font-size: small;">
-                                                    <label id="wuh">${wuh}</label>
-                                                    <label id="wth">${wth}</label>
-                                                </span><br /><input class="form-control"  id="pos84" name="pos84" type="text" value=${Wed8} /></td>
-                                            <td>
-                                                <select  name="prjThur" class="form-control" onchange="this.form.submit()">
-                                                    ${prjThur}
-                                                </select><br /><select name="tskThur" class="form-control" onchange="this.form.submit()">
-                                                    ${tskThur}
-                                                </select> <span style="color:grey; font-size: small;">
-                                                    <label id="thuh">${thuh}</label>
-                                                    <label id="thth">${thth}</label>
-                                                </span><br /><input class="form-control"  id="pos85" name="pos85" type="text" value=${Thur8} /></td>
-                                            <td>
-                                                <select  name="prjFri" class="form-control" onchange="this.form.submit()" >
-                                                    ${prjFri}
-                                                </select><br /><select name="tskFri" class="form-control" onchange="this.form.submit()">
-                                                    ${tskFri}
-                                                </select> <span style="color:grey; font-size: small;">
-                                                    <label id="fuh">${fuh}</label>
-                                                    <label id="fth">${fth}</label>
-                                                </span><br /><input class="form-control" id="pos86" name="pos86" type="text" value=${Fri8} /></td>
-                                            <td>
-                                                <select  name="prjSat" class="form-control" onchange="this.form.submit()" onchange="this.form.submit()">
-                                                    ${prjSat}
-                                                </select><br /><select name="tskSat" class="form-control" onchange="this.form.submit()">
-                                                    ${tskSat}
-                                                </select> <span style="color:grey; font-size: small;">
-                                                    <label id="satuh">${satuh}</label>
-                                                    <label id="satth">${satth}</label>
-                                                </span><br /><input class="form-control" id="pos87" name="pos87" type="text" value=${Sat8} /></td>
-                                        </tr>                                           
-                                        <tr>
-                                            <td>Total</td>
-                                            <td>
-                                                <input class="form-control" name="totsun" type="text" disabled value=${Sun9} ></td>
-                                            <td>
-                                                <input class="form-control" name="totmon" type="text" disabled value=${Mon9} ></td>
-                                            <td>
-                                                <input class="form-control" name="tottue" type="text" disabled value=${Tue9} ></td>
-                                            <td>
-                                                <input class="form-control" name="totwed" type="text" disabled value=${Wed9} ></td>
-                                            <td>
-                                                <input class="form-control" name="totthur" type="text" disabled value=${Thur9} ></td>
-                                            <td>
-                                                <input class="form-control" name="totfri" type="text" disabled value=${Fri9} ></td>
-                                            <td>
-                                                <input class="form-control" name="totsat" type="text" disabled value=${Sat9} ></td>
+                                                <input type="submit" id="save" name="prjremove" value="Remove" class="btn btn-primary btn-sm"/>  
+                                            </td>
+                                            <td></td>
                                         </tr>
+                                        <tr><td></td>
+                                            <td><span style="color:grey; font-size: small;">${prjtskSun}</span></td>
+                                            <td><span style="color:grey; font-size: small;">${prjtskMon}</span></td>
+                                            <td><span style="color:grey; font-size: small;">${prjtskTue}</span></td>
+                                            <td><span style="color:grey; font-size: small;">${prjtskWed}</span></td>
+                                            <td><span style="color:grey; font-size: small;">${prjtskThur}</span></td>
+                                            <td><span style="color:grey; font-size: small;">${prjtskFri}</span></td>
+                                            <td><span style="color:grey; font-size: small;">${prjtskSat}</span></td>
+                                        </tr>                                    
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <input class="form-control" id="pos81" name="pos81" type="text"disabled value=${Sun8}></td>
+                                        <td>
+                                            <input class="form-control" id="pos82" name="pos82" type="text" disabled value=${Mon8} /></td>
+                                        <td>
+                                            <input class="form-control"  id="pos83" name="pos83" type="text" disabled value=${Tue8} /></td>
+                                        <td>
+                                            <input class="form-control"  id="pos84" name="pos84" type="text" disabled  value=${Wed8} /></td>
+                                        <td>
+                                            <input class="form-control"  id="pos85" name="pos85" type="text" disabled value=${Thur8} /></td>
+                                        <td>
+                                            <input class="form-control" id="pos86" name="pos86" type="text" disabled value=${Fri8} /></td>
+                                        <td>
+                                            <input class="form-control" id="pos87" name="pos87" type="text" disabled value=${Sat8} /></td>
+                                    </tr>                                           
+                                    <tr>
+                                        <td>Total</td>
+                                        <td>
+                                            <input class="form-control" name="totsun" type="text" disabled value=${Sun9} ></td>
+                                        <td>
+                                            <input class="form-control" name="totmon" type="text" disabled value=${Mon9} ></td>
+                                        <td>
+                                            <input class="form-control" name="tottue" type="text" disabled value=${Tue9} ></td>
+                                        <td>
+                                            <input class="form-control" name="totwed" type="text" disabled value=${Wed9} ></td>
+                                        <td>
+                                            <input class="form-control" name="totthur" type="text" disabled value=${Thur9} ></td>
+                                        <td>
+                                            <input class="form-control" name="totfri" type="text" disabled value=${Fri9} ></td>
+                                        <td>
+                                            <input class="form-control" name="totsat" type="text" disabled value=${Sat9} ></td>
+                                    </tr>
                                     </tbody>
                                 </table>
                                 <table class="table">

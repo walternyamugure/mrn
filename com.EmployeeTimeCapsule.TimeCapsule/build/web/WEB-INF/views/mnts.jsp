@@ -15,51 +15,7 @@
 
         <link href="css/jquery-ui.theme.css" rel="stylesheet">
         <script src="js/jquery-3.2.1.js"></script>  
-        <script src="js/jquery-ui.js"></script>
-
-        <script type="text/javascript">
-            $(function ()
-            {
-                $('#date-pick').datepicker();
-            });
-        </script>
-        <script>
-            $(document).ready(function () {
-                $('#save').on('click', function (data) {
-
-                    var parent = document.getElementById("wrapper");
-                    var child = document.getElementById("result");
-                    if (typeof (parent) !== 'undefined' && parent !== null)
-                    {
-                        if (typeof (child) !== 'undefined' && child !== null)
-                        {
-                            parent.removeChild(child);
-                        }
-                    }
-                    var rw = 1;
-                    var col = 1;
-                    var ele;
-                    var val;
-                    while (rw <= 8) {
-                        col = 1;
-                        while (col <= 7) {
-                            ele = "pos" + rw + col;
-                            val = document.getElementById(ele).value;
-                            if (!isNaN(val) && val >= 0 && val < 17) {
-                                document.getElementById(ele).style.removeProperty("color");
-                                document.getElementById(ele).style.removeProperty("borderColor");
-                            } else {
-                                document.getElementById(ele).style.color = "red";
-                                document.getElementById(ele).style.borderColor = "red";
-                                data.preventDefault();
-                            }
-                            col++;
-                        }
-                        rw++;
-                    }
-                });
-            });
-        </script>
+        <script src="js/jquery-ui.js"></script>      
     </head>
     <body>          
         <div id="wrapper">
@@ -122,7 +78,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-12">
-                                <select class="form-control" name="wk">${Periods}</select>
+                               
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -256,71 +212,52 @@
                                             <td>
                                                 <input class="form-control"  id="pos77" name="pos77" type="text" value=${Sat7}></td>
                                         </tr>
-                                        <tr>
-                                            <td>Project</td>
-                                            <td>
-                                                <select name="prjSun" class="form-control" onchange="this.form.submit()">
-                                                    ${prjSun}
-                                                </select><br /><select name="tskSun" class="form-control">
-                                                    ${tskSun}
-                                                </select><br /><input class="form-control" id="pos81" name="pos81" type="text" value=${Sun8} /></td>
-                                            <td>
-                                                <select  name="prjMon" class="form-control" onchange="this.form.submit()">
-                                                    ${prjMon}
-                                                </select><br /><select name="tskMon" class="form-control">
-                                                    ${tskMon}
-                                                </select><br /><input class="form-control" id="pos82" name="pos82" type="text" value=${Mon8} /></td>
-                                            <td>
-                                                <select  name="prjTue" class="form-control" onchange="this.form.submit()">
-                                                    ${prjTue}
-                                                </select><br /><select name="tskTue" class="form-control">
-                                                    ${tskTue}
-                                                </select><br /><input class="form-control"  id="pos83" name="pos83" type="text" value=${Tue8} /></td>
-                                            <td>
-                                                <select  name="prjWed" class="form-control" onchange="this.form.submit()">
-                                                    ${prjWed}
-                                                </select><br /><select name="tskWed" class="form-control">
-                                                    ${tskWed}
-                                                </select><br /><input class="form-control"  id="pos84" name="pos84" type="text" value=${Wed8} /></td>
-                                            <td>
-                                                <select  name="prjThur" class="form-control" onchange="this.form.submit()">
-                                                    ${prjThur}
-                                                </select><br /><select name="tskThur" class="form-control">
-                                                    ${tskThur}
-                                                </select><br /><input class="form-control"  id="pos85" name="pos85" type="text" value=${Thur8} /></td>
-                                            <td>
-                                                <select  name="prjFri" class="form-control" onchange="this.form.submit()">
-                                                    ${prjFri}
-                                                </select><br /><select name="tskFri" class="form-control">
-                                                    ${tskFri}
-                                                </select><br /><input class="form-control" id="pos86" name="pos86" type="text" value=${Fri8} /></td>
-                                            <td>
-                                                <select  name="prjSat" class="form-control" onchange="this.form.submit()">
-                                                    ${prjSat}
-                                                </select><br /><select name="tskSat" class="form-control">
-                                                    ${tskSat}
-                                                </select><br /><input class="form-control" id="pos87" name="pos87" type="text" value=${Sat8} /></td>
-                                        </tr>
+                                       <tr><td>Projects</td>
+                                            <td><span style="color:grey; font-size: small;">${prjtskSun}</span></td>
+                                            <td><span style="color:grey; font-size: small;">${prjtskMon}</span></td>
+                                            <td><span style="color:grey; font-size: small;">${prjtskTue}</span></td>
+                                            <td><span style="color:grey; font-size: small;">${prjtskWed}</span></td>
+                                            <td><span style="color:grey; font-size: small;">${prjtskThur}</span></td>
+                                            <td><span style="color:grey; font-size: small;">${prjtskFri}</span></td>
+                                            <td><span style="color:grey; font-size: small;">${prjtskSat}</span></td>
+                                        </tr>                                    
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <input class="form-control" id="pos81" name="pos81" type="text" disabled value=${Sun8}></td>
+                                        <td>
+                                            <input class="form-control" id="pos82" name="pos82" type="text" disabled value=${Mon8} /></td>
+                                        <td>
+                                            <input class="form-control"  id="pos83" name="pos83" type="text" disabled value=${Tue8} /></td>
+                                        <td>
+                                            <input class="form-control"  id="pos84" name="pos84" type="text" disabled  value=${Wed8} /></td>
+                                        <td>
+                                            <input class="form-control"  id="pos85" name="pos85" type="text" disabled value=${Thur8} /></td>
+                                        <td>
+                                            <input class="form-control" id="pos86" name="pos86" type="text" disabled value=${Fri8} /></td>
+                                        <td>
+                                            <input class="form-control" id="pos87" name="pos87" type="text" disabled value=${Sat8} /></td>
+                                    </tr>     
                                         <tr>
                                             <td>Total</td>
                                             <td>
-                                                <input class="form-control" name="totsun" type="text" value=${Sun9}></td>
+                                                <input class="form-control" name="totsun" type="text" disabled value=${Sun9}></td>
                                             <td>
-                                                <input class="form-control" name="totmon" type="text" value=${Mon9}></td>
+                                                <input class="form-control" name="totmon" type="text" disabled value=${Mon9}></td>
                                             <td>
-                                                <input class="form-control" name="tottue" type="text" value=${Tue9}></td>
+                                                <input class="form-control" name="tottue" type="text" disabled value=${Tue9}></td>
                                             <td>
-                                                <input class="form-control" name="totwed" type="text" value=${Wed9}></td>
+                                                <input class="form-control" name="totwed" type="text" disabled value=${Wed9}></td>
                                             <td>
-                                                <input class="form-control" name="totthur" type="text" value=${Thur9}></td>
+                                                <input class="form-control" name="totthur" type="text" disabled value=${Thur9}></td>
                                             <td>
-                                                <input class="form-control" name="totfri" type="text" value=${Fri9}></td>
+                                                <input class="form-control" name="totfri" type="text" disabled value=${Fri9}></td>
                                             <td>
-                                                <input class="form-control" name="totsat" type="text" value=${Sat9}></td>
+                                                <input class="form-control" name="totsat" type="text" disabled value=${Sat9}></td>
                                         </tr>
                                     </tbody>
                                 </table>
-                                <%-- <table class="table">
+                                <table class="table">
                                      <tr>
                                          <td><b>Timesheet status</b></td>
                                          <td>${tsStatus}</td>
@@ -331,7 +268,7 @@
                                          <td><b>Cost Center</b></td>
                                          <td>${costCenter}</td>
                                      </tr>
-                                 </table>--%>
+                                 </table>
                                 <table class="table">
                                     <tr>
                                         <td>
